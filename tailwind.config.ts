@@ -13,6 +13,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Orbitron', 'sans-serif'],
+        body: ['Cairo', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +52,19 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        neon: {
+          cyan: "hsl(var(--neon-cyan))",
+          magenta: "hsl(var(--neon-magenta))",
+          purple: "hsl(var(--neon-purple))",
+          green: "hsl(var(--neon-green))",
+        },
+        cyber: {
+          dark: "hsl(var(--cyber-dark))",
+          blue: "hsl(var(--cyber-blue))",
+        },
+        terminal: {
+          green: "hsl(var(--terminal-green))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -65,25 +83,77 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        floating: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { 
+            boxShadow: "0 0 20px hsl(var(--neon-cyan) / 0.5), 0 0 40px hsl(var(--neon-cyan) / 0.3)",
           },
-          to: {
-            height: "0",
+          "50%": { 
+            boxShadow: "0 0 30px hsl(var(--neon-cyan) / 0.8), 0 0 60px hsl(var(--neon-cyan) / 0.5)",
           },
+        },
+        glitch: {
+          "0%, 90%, 100%": { transform: "translate(0)" },
+          "92%": { transform: "translate(-2px, 2px)" },
+          "94%": { transform: "translate(2px, -2px)" },
+          "96%": { transform: "translate(-2px, -2px)" },
+          "98%": { transform: "translate(2px, 2px)" },
+        },
+        "fade-in-up": {
+          from: { opacity: "0", transform: "translateY(30px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "slide-in-left": {
+          from: { opacity: "0", transform: "translateX(-50px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "slide-in-right": {
+          from: { opacity: "0", transform: "translateX(50px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        typing: {
+          from: { width: "0" },
+          to: { width: "100%" },
+        },
+        blink: {
+          "0%, 50%": { borderColor: "hsl(var(--neon-cyan))" },
+          "51%, 100%": { borderColor: "transparent" },
+        },
+        scan: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        floating: "floating 3s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        glitch: "glitch 0.5s ease-in-out infinite",
+        "fade-in-up": "fade-in-up 0.6s ease-out forwards",
+        "slide-in-left": "slide-in-left 0.6s ease-out forwards",
+        "slide-in-right": "slide-in-right 0.6s ease-out forwards",
+        typing: "typing 3s steps(40, end)",
+        blink: "blink 1s step-end infinite",
+        scan: "scan 2s linear infinite",
+      },
+      backgroundImage: {
+        "gradient-cyber": "linear-gradient(135deg, hsl(var(--neon-cyan)), hsl(var(--neon-magenta)))",
+        "gradient-terminal": "linear-gradient(180deg, hsl(230 30% 12%), hsl(230 25% 5%))",
+        "circuit-pattern": `
+          linear-gradient(90deg, hsl(var(--neon-cyan) / 0.05) 1px, transparent 1px),
+          linear-gradient(hsl(var(--neon-cyan) / 0.05) 1px, transparent 1px)
+        `,
       },
     },
   },
