@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Globe, Maximize, Minimize } from 'lucide-react';
+import { Menu, X, Globe, Maximize, Minimize, Skull, Zap } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useTheme } from '@/contexts/ThemeContext';
 import logo from '@/assets/skullpatch-logo.png';
 
 const Navbar: React.FC = () => {
@@ -11,7 +10,6 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const { t, language, setLanguage, isRTL } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -71,16 +69,34 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <motion.img
-              src={logo}
-              alt="SKULLPATCH Logo"
-              className="h-12 w-auto"
-              whileHover={{ scale: 1.05, rotate: 5 }}
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 300 }}
-            />
-            <span className="font-display text-xl font-bold text-gradient-cyber hidden sm:block">
-              SKULLPATCH
-            </span>
+            >
+              <motion.div
+                className="absolute inset-0 bg-primary/30 blur-xl rounded-full"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.img
+                src={logo}
+                alt="SKULLPATCH Logo"
+                className="h-12 w-auto relative z-10"
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </motion.div>
+            <div className="hidden sm:flex flex-col">
+              <motion.span 
+                className="font-display text-xl font-black text-gradient-cyber tracking-wider"
+                animate={{ textShadow: ['0 0 10px hsl(var(--neon-cyan))', '0 0 20px hsl(var(--neon-cyan))', '0 0 10px hsl(var(--neon-cyan))'] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                SKULLPATCH
+              </motion.span>
+              <span className="text-[10px] text-primary/60 font-mono tracking-widest">CYBER TOOLKIT</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -120,21 +136,6 @@ const Navbar: React.FC = () => {
                 <Minimize className="w-5 h-5 text-foreground" />
               ) : (
                 <Maximize className="w-5 h-5 text-foreground" />
-              )}
-            </motion.button>
-
-            {/* Theme Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
-              title={t('theme.toggle')}
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-5 h-5 text-foreground" />
-              ) : (
-                <Moon className="w-5 h-5 text-foreground" />
               )}
             </motion.button>
 

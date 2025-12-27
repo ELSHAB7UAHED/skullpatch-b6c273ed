@@ -91,28 +91,6 @@
     --ring: 180 100% 50%;
   }
 
-  .light {
-    --background: 210 40% 98%;
-    --foreground: 230 25% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 230 25% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 230 25% 10%;
-    --primary: 200 100% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 280 80% 50%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 92%;
-    --muted-foreground: 230 20% 40%;
-    --accent: 320 80% 50%;
-    --accent-foreground: 0 0% 100%;
-    --border: 210 30% 85%;
-    --input: 210 30% 90%;
-    --ring: 200 100% 40%;
-    --neon-cyan: 200 100% 40%;
-    --neon-magenta: 320 80% 50%;
-    --cyber-dark: 210 40% 98%;
-  }
 }
 
 @layer base {

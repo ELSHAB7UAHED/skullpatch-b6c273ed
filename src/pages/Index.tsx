@@ -1,11 +1,10 @@
 import React from 'react';
-import { LanguageProvider } from '@/contexts/LanguageContext';
-import { ThemeProvider } from '@/contexts/ThemeContext';
 import MatrixRain from '@/components/MatrixRain';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import DownloadSection from '@/components/DownloadSection';
+import DeveloperSection from '@/components/DeveloperSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -22,6 +21,7 @@ const Index: React.FC = () => {
           <HeroSection />
           <FeaturesSection />
           <DownloadSection />
+          <DeveloperSection />
           <ContactSection />
         </main>
         <Footer />
